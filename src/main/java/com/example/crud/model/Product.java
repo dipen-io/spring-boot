@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.crud.model;
 
 /*
     @Entity := Marks this class as a jpa , which will be mapped to a table in db
@@ -7,6 +7,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity

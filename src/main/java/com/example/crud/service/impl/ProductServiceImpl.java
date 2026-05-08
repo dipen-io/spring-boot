@@ -1,9 +1,9 @@
-package com.example.demo.service.impl;
+package com.example.crud.service.impl;
 
-import com.example.demo.model.Product;
-import com.example.demo.model.ProductDTO;
-import com.example.demo.repository.ProductRepository;
-import com.example.demo.service.ProductService;
+import com.example.crud.model.Product;
+import com.example.crud.model.ProductDTO;
+import com.example.crud.repository.ProductRepository;
+import com.example.crud.service.ProductService;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,9 +50,37 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductDTO updateProductPartial(Long id, ProductDTO productDTO) {
+        Product product = productRepository
+            .findById(id)
+            .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        if (productDTO.name() != null) {
+            product.setName(productDTO.name());
+        }
+
+        if (productDTO.description() != null) {
+            product.setDescription(productDTO.description());
+        }
+
+        if (productDTO.price() != null) {
+            product.setPrice(productDTO.price());
+        }
+
+        Product updatedProduct = productRepository.save(product);
+        return convertToDTO(updatedProduct);
+    }
+
+    @Override
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+
+    /*
+    Convertion logic betweenDTO and Entity placed in serivce
+    convertToDTO := Converts a Product entity into a ProductDTO
+    convertTOEntity := Convert a ProductDTO into a Product entity
+    */
 
     // convert Product Entity to ProductDTO
     private ProductDTO convertToDTO(Product product) {

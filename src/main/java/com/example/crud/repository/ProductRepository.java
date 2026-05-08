@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.example.crud.repository;
 
-import com.example.demo.model.Product;
+import com.example.crud.model.Product;
 /*
   creating an interface ProductRepority that extends JpaRespository
   JpaRepository := Provies all necessary CRUD methods (save(), findAll(), findById())

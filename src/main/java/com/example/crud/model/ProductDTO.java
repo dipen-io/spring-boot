@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.crud.model;
 
 /*
 java recored :=  java feature that automatically generates constructor, getter, setter, toString(), equals, and hashCode
@@ -9,5 +9,5 @@ public record ProductDTO(
     Long id,
     String name,
     String description,
-    double price
+    Double price
 ) {}
